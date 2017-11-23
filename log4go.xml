@@ -1,0 +1,16 @@
+<logging>
+    <filter enabled="true">
+        <tag>stdout</tag>
+        <type>console</type>
+        <level>TRACE</level>
+    </filter>
+    <filter enabled="false">
+        <tag>file</tag>
+        <type>file</type>
+        <level>INFO</level>
+        <property name="filename">ffmpeg.log</property>
+        <property name="rotate">true</property>
+        <property name="maxsize">4M</property>
+        <property name="daily">true</property>
+    </filter>
+</logging>
