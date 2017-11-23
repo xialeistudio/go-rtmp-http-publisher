@@ -13,3 +13,19 @@
 ffmpeg-publisher -h
 ```
 
+## HTTP推流
+## 客户端请求
+```
+Url: htt://server_addr/base64
+Method: POST
+Content-Type: text/plain
+Body: audio/video base64Data
+```
+
+## 服务端响应
+```json
+{
+  "errmsg":"ok",
+  "errcode":0
+}
+```

@@ -49,18 +49,8 @@ func main() {
 	log4go.Info("HTTP Upload Key %s", uploadKey)
 
 	http.HandleFunc("/", handleIndex)
-	http.HandleFunc("/publish", handlePublisher)
+	http.HandleFunc("/base64", handleBase64Publish)
 	panic(http.ListenAndServe(listen, nil))
-}
-
-func handleIndex(w http.ResponseWriter, _ *http.Request) {
-	ret := map[string]interface{}{
-		"name":    "ffpmeg-publisher",
-		"version": VERSION,
-		"uptime":  time.Since(start).String(),
-	}
-	w.Header().Set("Content-Type", "application/json;charset=utf-8")
-	json.NewEncoder(w).Encode(&ret)
 }
 
 func sendResponse(errmsg string, statusCode int, w http.ResponseWriter) {
@@ -79,7 +69,17 @@ func sendResponse(errmsg string, statusCode int, w http.ResponseWriter) {
 	}
 }
 
-func handlePublisher(w http.ResponseWriter, r *http.Request) {
+func handleIndex(w http.ResponseWriter, _ *http.Request) {
+	ret := map[string]interface{}{
+		"name":    "ffpmeg-publisher",
+		"version": VERSION,
+		"uptime":  time.Since(start).String(),
+	}
+	w.Header().Set("Content-Type", "application/json;charset=utf-8")
+	json.NewEncoder(w).Encode(&ret)
+}
+
+func handleBase64Publish(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "POST" {
 		sendResponse("Method Not Allowed", 405, w)
 		return
