@@ -138,7 +138,7 @@ func publishVoice(buf []byte, id string) error {
 		return err
 	}
 	// 执行系统命令
-	cmd := exec.Command(ffmpeg, "-i", mp3filename, "-acodec", "aac", "-f", "mp3", rtmp+"/"+id)
+	cmd := exec.Command(ffmpeg, "-i", mp3filename, "-acodec", "copy", "-f", "mp3", rtmp+"/"+id)
 	log4go.Trace("live %s execute %s", id, strings.Join(cmd.Args, " "))
 	cmd.Stderr = os.Stderr
 	cmd.Stdout = os.Stdout
