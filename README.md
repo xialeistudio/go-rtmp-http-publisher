@@ -1,5 +1,5 @@
 # HTTP -> RTMP Streaming Proxy
-[README-CN.md](中文文档)
+[中文文档](README-CN.md)
 An RTMP streaming proxy developed based on HTTP and ffmpeg, solving the problem of not being able to stream normal HTTP audio/video directly to an RTMP server.
 
 ffmpeg installation is required for proper usage.
